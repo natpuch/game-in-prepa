@@ -1,31 +1,40 @@
-var bat;
-var ball;
+var Engine = Matter.Engine,
+  World = Matter.World,
+  Bodies = Matter.Bodies;
+
+var engine;
+var box1;
+var world;
+var boxes;
+var ground;
+var player;
 
 function setup() {
-  createCanvas(1900,1000);
-  
-  bat = createSprite(20, 200,10,100);
-  bat.setCollider("rectangle",0,0,10,100);
-  bat.mass = 5;
-  
+  createCanvas(800, 800);
+  engine = Engine.create();
+  world = engine.world;
+  Engine.run(engine);
+  boxes = [];
+  ground = new Ground(width/2, 400, width, 20);
+  player = new Player(750, 200, 50, 50);
+}
 
-  ball = createSprite(100, 100,10,10);
-  ball.mass = 1;
-  ball.setVelocity(3,0);
+function mousePressed() {
+  boxes.push(new RectBox(mouseX, mouseY, 10, 10));
 }
 
 function draw() {
-  background(0,0,0);
-  
+  background(51);
 
-  bat.position.x = mouseX;
-  bat.position.y = mouseY;
-  
+  player.move();
+  player.show();
 
-	
-bat.debug = mouseIsPressed;
-  
-  ball.bounce(bat);
-  
-  drawSprites();
+  for (var rectBox of boxes) {
+    rectBox.show();
+  }
+
+  //console.log(player.body.position);
+
+  ground.show();
+
 }
