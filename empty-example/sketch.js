@@ -43,6 +43,7 @@ function setup() {
   ];
   player = new Player(width * 0.1, height * 0.9, 20, 20);
   timeBarrel = 0;
+
 }
 
 /*function mousePressed() {
@@ -51,7 +52,13 @@ function setup() {
 
 function draw() {
   background(51);
-
+  noStroke();
+  text('EXIT', width * 0.887, height * 0.09);
+  rectMode(CENTER);
+  fill(88,41,0);
+  rect(width * 0.9, height * 0.15, width * 0.03, (width * 0.03)*2.5)
+  fill(255);
+  rect(width * 0.89, height * 0.15, width * 0.01, (width * 0.01))
   player.move(millis());
   player.show();
 
