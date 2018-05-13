@@ -1,13 +1,12 @@
-function Ground(x, y, w, h, angle) {
-  this.body = Bodies.rectangle(x, y, w, h, {
-    isStatic: true
+function Barrel(x, y, radius) {
+  this.body = Bodies.circle(x, y, radius, {
+    friction: 0.1
   });
-  Matter.Body.rotate(this.body, angle);
   World.add(world, this.body);
   this.x = x;
   this.y = y;
-  this.w = w;
-  this.h = h;
+  this.r = radius;
+
 
 
 
@@ -16,13 +15,11 @@ function Ground(x, y, w, h, angle) {
 
     push();
     noStroke();
-    fill(128);
+    fill(0);
     rectMode(CENTER);
     translate(pos.x, pos.y);
     rotate(this.body.angle);
-    rect(0, 0, this.w, this.h);
-    fill(255);
-    rect(0,0,5,5);
+    ellipse(0, 0, this.r * 2, this.r * 2);
     pop();
   }
 }
