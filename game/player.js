@@ -39,7 +39,7 @@ function Player(x, y, w, h) {
         y: this.body.velocity.y
       });
     }
-    if (keyIsDown(UP_ARROW) && (time - this.timeJump > 950)) {
+    if (keyIsDown(UP_ARROW) && (time - this.timeJump > 950 || (abs(this.body.velocity.y) < 0.2 && (time - this.timeJump > 950 / 2)) )) {
       Matter.Body.setVelocity(this.body, {
         x: this.body.velocity.x,
         y: -1200 * 0.0075

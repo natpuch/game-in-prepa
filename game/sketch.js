@@ -23,6 +23,7 @@ var sourcesBarrels;
 
 function setup() {
   createCanvas(4/3 * windowHeight, windowHeight);
+  //createCanvas(4/3 * 900, 900);
 
   engine = Engine.create();
   world = engine.world;
@@ -38,19 +39,29 @@ function mousePressed() {
 
 function draw() {
   scale(width / 1200, width / 1200);
-
   background(51);
   noStroke();
+
+  if (keyIsDown(SHIFT)) {
+    changeLevel(levelPlaying);
+  }
+
   text('EXIT', (eval(exitArray[0])+eval(exitArray[1])) / 2 - 15, (eval(exitArray[2])+eval(exitArray[3])) / 2 - 50);
   rectMode(CENTER);
   fill(88, 41, 0);
   rect((eval(exitArray[0])+eval(exitArray[1]))/2, (eval(exitArray[2])+eval(exitArray[3])) / 2, 1200 * 0.03, (1200 * 0.03) * 2.5);
   fill(255);
   rect((eval(exitArray[0])+eval(exitArray[1]))/2 * 0.99, (eval(exitArray[2])+eval(exitArray[3])) / 2, 1200 * 0.01, (1200 * 0.01));
+
+
+
   player.move(millis());
   player.show();
 
   text((millis() - timeLoad) / 1000, 1200 / 20, 900 / 20);
+
+  text("x : " + floor(mouseX / width * 1200) + " y : " + floor(mouseY / height * 900), 1200 / 20, 900 / 15);
+  text("velocity : " + player.body.velocity.y, 1200 / 20, 900 / 10 );
 
 
 
