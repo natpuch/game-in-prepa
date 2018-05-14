@@ -13,52 +13,50 @@ var timeBarrel;
 var time;
 
 function setup() {
-  createCanvas(1200, 900);
+  createCanvas(4/3 * windowHeight, windowHeight);
   engine = Engine.create();
   world = engine.world;
   Engine.run(engine);
   boxes = [];
   barrels = [];
 
-  walls = [new Ground(width * 0.5, height * 1, width, 20, 0),
-    new Ground(width * 0.5, height * 0, width, 20, 0),
-    new Ground(width * 1, height * 0.5, 20, height, 0),
-    new Ground(width * 0, height * 0.5, 20, height, 0),
+  walls = [new Ground(1200 * 0.5, 900 * 1, 1200, 1200 / 60, 0),
+    new Ground(1200 * 0.5, 900 * 0, 1200, 1200 / 60, 0),
+    new Ground(1200 * 1, 900 * 0.5, 1200 / 60, 900, 0),
+    new Ground(1200 * 0, 900 * 0.5, 1200 / 60, 900, 0),
   ];
-  grounds = [new Ground(width * 0.2, height * 0.85, width * 0.1, 20, PI / 8),
-    new Ground(width * 0.48, height * 0.75, width * 0.1, 20, -PI / 8),
-    new Ground(width * 0.8, height * 0.75, width * 0.1, 20, PI / 8),
-    new Ground(width * 0.9, height * 0.6, width * 0.1, 20, -PI / 8),
-    new Ground(width * 0.5, height * 0.4, width * 0.5, 20, PI / 8),
-    new Ground(width * 0.5, height * 0.2, width * 0.2, 20, -PI / 8),
-    new Ground(width * 0.9, height * 0.2, width * 0.1, 20, 0),
+  grounds = [new Ground(1200 * 0.2, 900 * 0.85, 1200 * 0.1, 1200 / 60, PI / 8),
+    new Ground(1200 * 0.48, 900 * 0.75, 1200 * 0.1, 1200 / 60, -PI / 8),
+    new Ground(1200 * 0.8, 900 * 0.75, 1200 * 0.1, 1200 / 60, PI / 8),
+    new Ground(1200 * 0.9, 900 * 0.6, 1200 * 0.1, 1200 / 60, -PI / 8),
+    new Ground(1200 * 0.5, 900 * 0.4, 1200 * 0.5, 1200 / 60, PI / 8),
+    new Ground(1200 * 0.5, 900 * 0.2, 1200 * 0.2, 1200 / 60, -PI / 8),
+    new Ground(1200 * 0.9, 900 * 0.2, 1200 * 0.1, 1200 / 60, 0),
   ];
-  player = new Player(width * 0.1, height * 0.9, 20, 20);
+  player = new Player(1200 * 0.1, 900 * 0.9, 1200 / 60, 1200 / 60);
   timeBarrel = 0;
   time = 0;
 
 }
 
-/*function mousePressed() {
-  barrels.push(new Barrel(mouseX, mouseY, 15));
-}*/
 
 function draw() {
+  scale(width / 1200, width / 1200);
   background(51);
   noStroke();
-  text('EXIT', width * 0.887, height * 0.09);
+  text('EXIT', 1200 * 0.887, 900 * 0.09);
   rectMode(CENTER);
-  fill(88,41,0);
-  rect(width * 0.9, height * 0.15, width * 0.03, (width * 0.03)*2.5)
+  fill(88, 41, 0);
+  rect(1200 * 0.9, 900 * 0.15, 1200 * 0.03, (1200 * 0.03) * 2.5)
   fill(255);
-  rect(width * 0.89, height * 0.15, width * 0.01, (width * 0.01))
+  rect(1200 * 0.89, 900 * 0.15, 1200 * 0.01, (1200 * 0.01))
   player.move(millis());
   player.show();
 
-  text(millis()/1000, width / 20, height / 20);
+  text(millis() / 1000, 1200 / 20, 900 / 20);
 
   if (millis() - timeBarrel > 1000) {
-    barrels.push(new Barrel(width * 0.5, height * 0.1, 15));
+    barrels.push(new Barrel(1200 * 0.5, 900 * 0.1, 1200 / 80));
     timeBarrel = millis();
   }
 
@@ -78,17 +76,16 @@ function draw() {
     barrel.show();
   }
 
-  if (player.body.position.x < width * 0.95 && player.body.position.x > width * 0.85 && player.body.position.y < height * 0.2 && player.body.position.y > height * 0.1) {
+  if (player.body.position.x < 1200 * 0.95 && player.body.position.x > 1200 * 0.85 && player.body.position.y < 900 * 0.2 && player.body.position.y > 900 * 0.1) {
     textSize(32);
-    fill(0,70,128);
-    if (millis() < 12*1000 || time != 0){
+    fill(0, 70, 128);
+    if (millis() < 12 * 1000 || time != 0) {
       if (time == 0) {
         time = millis();
       }
-      text('YOU WIN !' + time / 1000 + 's', width / 2, height / 2);
-    }
-    else {
-      text('TOO LATE !', width / 2, height / 2);
+      text('YOU WIN !' + time / 1000 + 's', 1200 / 2, 900 / 2);
+    } else {
+      text('TOO LATE !', 1200 / 2, 900 / 2);
     }
   }
 

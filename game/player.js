@@ -29,20 +29,20 @@ function Player(x, y, w, h) {
 
     if (keyIsDown(RIGHT_ARROW)) {
       Matter.Body.setVelocity(this.body, {
-        x: 5,
+        x: 1200 / 240,
         y: this.body.velocity.y
       });
     }
     if (keyIsDown(LEFT_ARROW)) {
       Matter.Body.setVelocity(this.body, {
-        x: -5,
+        x: -1200 / 240,
         y: this.body.velocity.y
       });
     }
     if (keyIsDown(UP_ARROW) && (time - this.timeJump > 950)) {
       Matter.Body.setVelocity(this.body, {
         x: this.body.velocity.x,
-        y: -9
+        y: -1200 * 0.0075
       });
       this.timeJump = time;
     }
