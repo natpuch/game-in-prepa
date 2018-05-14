@@ -7,41 +7,32 @@ var engine;
 var world;
 var boxes;
 var grounds;
+var walls;
 var player;
 var barrels;
 var timeBarrel;
 var time;
 
+
+var levela;
+var aaa;
+
+
 function setup() {
   createCanvas(4/3 * windowHeight, windowHeight);
+
   engine = Engine.create();
   world = engine.world;
   Engine.run(engine);
-  boxes = [];
-  barrels = [];
 
-  walls = [new Ground(1200 * 0.5, 900 * 1, 1200, 1200 / 60, 0),
-    new Ground(1200 * 0.5, 900 * 0, 1200, 1200 / 60, 0),
-    new Ground(1200 * 1, 900 * 0.5, 1200 / 60, 900, 0),
-    new Ground(1200 * 0, 900 * 0.5, 1200 / 60, 900, 0),
-  ];
-  grounds = [new Ground(1200 * 0.2, 900 * 0.85, 1200 * 0.1, 1200 / 60, PI / 8),
-    new Ground(1200 * 0.48, 900 * 0.75, 1200 * 0.1, 1200 / 60, -PI / 8),
-    new Ground(1200 * 0.8, 900 * 0.75, 1200 * 0.1, 1200 / 60, PI / 8),
-    new Ground(1200 * 0.9, 900 * 0.6, 1200 * 0.1, 1200 / 60, -PI / 8),
-    new Ground(1200 * 0.5, 900 * 0.4, 1200 * 0.5, 1200 / 60, PI / 8),
-    new Ground(1200 * 0.5, 900 * 0.2, 1200 * 0.2, 1200 / 60, -PI / 8),
-    new Ground(1200 * 0.9, 900 * 0.2, 1200 * 0.1, 1200 / 60, 0),
-  ];
-  player = new Player(1200 * 0.1, 900 * 0.9, 1200 / 60, 1200 / 60);
-  timeBarrel = 0;
-  time = 0;
+  loadLevel();
 
 }
 
 
 function draw() {
   scale(width / 1200, width / 1200);
+
   background(51);
   noStroke();
   text('EXIT', 1200 * 0.887, 900 * 0.09);
