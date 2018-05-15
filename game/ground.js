@@ -9,8 +9,6 @@ function Ground(x, y, w, h, angle) {
   this.w = w;
   this.h = h;
 
-
-
   this.show = function() {
     var pos = this.body.position;
 

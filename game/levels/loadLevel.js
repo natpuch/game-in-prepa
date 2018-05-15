@@ -4,22 +4,26 @@ function loadLevel(level) {
   barrels = [];
   walls = [];
   grounds = [];
-  exitArray = []
-  sourcesBarrels = []
-  timeBarrels = []
+  exitArray = [];
+  sourcesBarrels = [];
+  timeBarrels = [];
+  exitObj = 0;
 
   loadFile(level);
 
   player = new Player(1200 * 0.1, 900 * 0.9, 1200 / 60, 1200 / 60);
   time = 0;
 
-  console.log(sourcesBarrels);
   timeLoad = millis();
 
 
 }
 
-function changeLevel(level) {
+function changeLevel() {
+  level = levelField.value();
+  if (level == "") {
+    level = levelPlaying;
+  }
   unloadLevel();
   loadLevel(level);
 }
@@ -64,6 +68,7 @@ function loadWall() {
       }
       if(levela[lineNum] == "exit =") {
         exitArray = levela[lineNum + 1].split(",");
+        exitObj = new Exit(eval(exitArray[0]), eval(exitArray[1]), eval(exitArray[2]), eval(exitArray[3]), eval(exitArray[4]));
       }
 
 
@@ -75,7 +80,6 @@ function loadWall() {
           sourcesBarrels.push([eval(sourcesParameter[0]), eval(sourcesParameter[1]),eval(sourcesParameter[2]),eval(sourcesParameter[3])]);
           timeBarrels.push(0);
         }
-        console.log(sourcesBarrels);
       }
 
 

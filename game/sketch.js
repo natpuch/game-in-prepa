@@ -18,12 +18,20 @@ var levelPlaying;
 
 var levela;
 var exitArray;
+var exitObj;
 var sourcesBarrels;
 
 
+
+var levelField;
+
+function consea() {
+  console.log(3);
+}
+
 function setup() {
-  createCanvas(4/3 * windowHeight, windowHeight);
-  //createCanvas(4/3 * 900, 900);
+  createCanvas(4 / 3 * windowHeight, windowHeight);
+  //createCanvas(16/9 * 900, 900);
 
   engine = Engine.create();
   world = engine.world;
@@ -31,11 +39,12 @@ function setup() {
 
   loadLevel(1);
 
+  levelField = createInput();
+  levelField.changed(changeLevel);
+  levelField.position(0, 0);
+
 }
 
-function mousePressed() {
-  changeLevel(levelPlaying);
-}
 
 function draw() {
   scale(width / 1200, width / 1200);
@@ -46,22 +55,12 @@ function draw() {
     changeLevel(levelPlaying);
   }
 
-  text('EXIT', (eval(exitArray[0])+eval(exitArray[1])) / 2 - 15, (eval(exitArray[2])+eval(exitArray[3])) / 2 - 50);
-  rectMode(CENTER);
-  fill(88, 41, 0);
-  rect((eval(exitArray[0])+eval(exitArray[1]))/2, (eval(exitArray[2])+eval(exitArray[3])) / 2, 1200 * 0.03, (1200 * 0.03) * 2.5);
-  fill(255);
-  rect((eval(exitArray[0])+eval(exitArray[1]))/2 * 0.99, (eval(exitArray[2])+eval(exitArray[3])) / 2, 1200 * 0.01, (1200 * 0.01));
 
-
-
-  player.move(millis());
-  player.show();
 
   text((millis() - timeLoad) / 1000, 1200 / 20, 900 / 20);
 
   text("x : " + floor(mouseX / width * 1200) + " y : " + floor(mouseY / height * 900), 1200 / 20, 900 / 15);
-  text("velocity : " + player.body.velocity.y, 1200 / 20, 900 / 10 );
+  text("velocity : " + player.body.velocity.y, 1200 / 20, 900 / 10);
 
 
 
@@ -89,17 +88,13 @@ function draw() {
     barrel.show();
   }
 
-  if (player.body.position.x < eval(exitArray[0]) && player.body.position.x > eval(exitArray[1]) && player.body.position.y < eval(exitArray[2]) && player.body.position.y > eval(exitArray[3])) {
-    textSize(32);
-    fill(0, 70, 128);
-    if ((millis() - timeLoad) < eval(exitArray[4]) || time != 0) {
-      if (time == 0) {
-        time = (millis() - timeLoad);
-      }
-      text('YOU WIN !' + time / 1000 + 's', 1200 / 2, 900 / 2);
-    } else {
-      text('TOO LATE !', 1200 / 2, 900 / 2);
-    }
+  if (exitObj != 0) {
+    exitObj.show();
+    exitObj.arrivedExit();
   }
+
+  player.move(millis());
+  player.show();
+
 
 }
