@@ -21,13 +21,17 @@ var exitArray;
 var exitObj;
 var sourcesBarrels;
 
-
+var menuText;
+var countLevels;
+var levelsText;
 
 var levelField;
 
-function consea() {
-  console.log(3);
+
+function countLvl(data) {
+  countLevels = parseInt(data[0]);
 }
+
 
 function setup() {
   createCanvas(4 / 3 * windowHeight, windowHeight);
@@ -36,6 +40,9 @@ function setup() {
   engine = Engine.create();
   world = engine.world;
   Engine.run(engine);
+
+
+  loadStrings("levels/levels.txt", countLvl);
 
   loadLevel(1);
 
@@ -60,9 +67,20 @@ function draw() {
   text((millis() - timeLoad) / 1000, 1200 / 20, 900 / 20);
 
   text("x : " + floor(mouseX / width * 1200) + " y : " + floor(mouseY / height * 900), 1200 / 20, 900 / 15);
-  text("velocity : " + player.body.velocity.y, 1200 / 20, 900 / 10);
 
 
+  for (var i = 0; i < menuText.length; i++) {
+    push();
+    textSize(35);
+    text(menuText[i][0], menuText[i][1], menuText[i][2])
+    pop();
+  }
+
+
+  if (keyIsDown(ENTER)) {
+    console.log(player.body.position.y, millis());
+
+  }
 
   for (var i = 0; i < sourcesBarrels.length; i++) {
     sourceBarrels = sourcesBarrels[i];
@@ -95,6 +113,8 @@ function draw() {
 
   player.move(millis());
   player.show();
+
+
 
 
 }
