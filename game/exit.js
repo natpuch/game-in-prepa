@@ -21,18 +21,18 @@ function Exit(x, y, w, h, winTime ) {
 
   }
 
-  this.arrivedExit = function() {
+  this.arrivedExit = function() {	
     if (abs(player.body.position.x - this.x) < this.w / 2 && abs(player.body.position.y - this.y) < this.h / 2 ) {
       textSize(32);
-      fill(0, 70, 128);
+      fill(255, 0, 0);
       if ((millis() - timeLoad) < this.winTime || (time != 0 && this.win == 1)) {
         if (time == 0) {
           time = (millis() - timeLoad);
           this.win = 1;
         }
-        text('YOU WIN !' + time / 1000 + 's', 1200 / 2, 900 / 2);
+        text('YOU WIN ! ' + time / 1000 + 's', 1200 / 2, 900 / 2);
       } else {
-        text('TOO LATE !' + time / 1000 + 's', 1200 / 2, 900 / 2);
+        text('TOO LATE ! ' + time / 1000 + 's', 1200 / 2, 900 / 2);
         if (time == 0) {
           time = (millis() - timeLoad);
         }

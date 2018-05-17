@@ -29,13 +29,13 @@ function Player(x, y, w, h) {
 
     if (keyIsDown(RIGHT_ARROW)) {
       Matter.Body.setVelocity(this.body, {
-        x: 1200 / 240,
+        x: 4,
         y: this.body.velocity.y
       });
     }
     if (keyIsDown(LEFT_ARROW)) {
       Matter.Body.setVelocity(this.body, {
-        x: -1200 / 240,
+        x: -4,
         y: this.body.velocity.y
       });
     }
