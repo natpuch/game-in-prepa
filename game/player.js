@@ -8,6 +8,7 @@ function Player(x, y, w, h) {
   this.w = w;
   this.h = h;
   this.timeJump = 0;
+  this.v = 5;
 
 
 
@@ -27,15 +28,24 @@ function Player(x, y, w, h) {
 
   this.move = function(time) {
 
+    if (key == "¡" && abs(this.v) < 7) {
+      this.v = this.v + 0.5;
+      key = 0;
+    }
+    if (key == ":" && abs(this.v) < 7) {
+      this.v = this.v - 0.5;
+      key = 0;
+    }
+
     if (keyIsDown(RIGHT_ARROW)) {
       Matter.Body.setVelocity(this.body, {
-        x: 4,
+        x: this.v,
         y: this.body.velocity.y
       });
     }
     if (keyIsDown(LEFT_ARROW)) {
       Matter.Body.setVelocity(this.body, {
-        x: -4,
+        x: -this.v,
         y: this.body.velocity.y
       });
     }

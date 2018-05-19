@@ -8,17 +8,15 @@ var world;
 var boxes;
 var grounds;
 var walls;
-var player;
+var players;
 var barrels;
 var timeBarrels;
-var time;
 var timeLoad;
 var levelPlaying;
 
 
 var levela;
-var exitArray;
-var exitObj;
+var exitsObj;
 var sourcesBarrels;
 
 var menuText;
@@ -35,7 +33,6 @@ function countLvl(data) {
 
 function setup() {
   createCanvas(4 / 3 * windowHeight, windowHeight);
-  //createCanvas(16/9 * 900, 900);
 
   engine = Engine.create();
   world = engine.world;
@@ -63,23 +60,16 @@ function draw() {
   }
 
 
-
+  textSize(12);
+  fill(0);
   text((millis() - timeLoad) / 1000, 1200 / 20, 900 / 20);
-
   text("x : " + floor(mouseX / width * 1200) + " y : " + floor(mouseY / height * 900), 1200 / 20, 900 / 15);
-
 
   for (var i = 0; i < menuText.length; i++) {
     push();
     textSize(35);
     text(menuText[i][0], menuText[i][1], menuText[i][2])
     pop();
-  }
-
-
-  if (keyIsDown(ENTER)) {
-    console.log(player.body.position.y, millis());
-
   }
 
   for (var i = 0; i < sourcesBarrels.length; i++) {
@@ -106,15 +96,19 @@ function draw() {
     barrel.show();
   }
 
-  if (exitObj != 0) {
-    exitObj.show();
-    exitObj.arrivedExit();
+  if (exitsObj != []) {
+    for (var exitObj of exitsObj){
+      exitObj.show();
+      exitObj.arrivedExit();
+    }
   }
 
-  player.move(millis());
-  player.show();
+  if (players != []) {
+    for (var player of players) {
+      player.move(millis());
+      player.show();
+      text("v = " + players[0].v, 1200 / 20, 75);
+    }
 
-
-
-
+  }
 }
