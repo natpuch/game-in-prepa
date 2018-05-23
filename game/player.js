@@ -9,9 +9,8 @@ function Player(x, y, w, h) {
   this.h = h;
   this.timeJump = 0;
   this.v = 5;
-
-
-
+  this.body.label = "player";
+  this.jumpAllowed = true;
 
   this.show = function() {
     var posPlayer = this.body.position;
@@ -28,11 +27,11 @@ function Player(x, y, w, h) {
 
   this.move = function(time) {
 
-    if (key == "¡" && abs(this.v) < 7) {
+    if (key == "¡" && this.v < 7) {
       this.v = this.v + 0.5;
       key = 0;
     }
-    if (key == ":" && abs(this.v) < 7) {
+    if (key == ":" && this.v > -7) {
       this.v = this.v - 0.5;
       key = 0;
     }
@@ -49,20 +48,18 @@ function Player(x, y, w, h) {
         y: this.body.velocity.y
       });
     }
-    if (keyIsDown(UP_ARROW) && (time - this.timeJump > 966 || (abs(this.body.velocity.y) < 0.2 && (time - this.timeJump > 500)) )) {
-      if (abs(this.body.velocity.y) < 0.2) {
-        console.log(this.body.velocity.y);
-        console.log(time - this.timeJump);
-      }
-
-
+	
+	
+	if (keyIsDown(UP_ARROW) && this.jumpAllowed) {
+	  
       Matter.Body.setVelocity(this.body, {
         x: this.body.velocity.x,
         y: -1200 * 0.0075
       });
 
-      this.timeJump = time;
+      this.jumpAllowed = false;
     }
+	
   }
 
 }

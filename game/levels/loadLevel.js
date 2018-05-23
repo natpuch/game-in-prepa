@@ -5,7 +5,6 @@ function loadLevel(level) {
   walls = [];
   grounds = [];
   sourcesBarrels = [];
-  timeBarrels = [];
   menuText = [];
   exitsObj = [];
   players = [];
@@ -13,7 +12,6 @@ function loadLevel(level) {
   loadFile(level);
 
   timeLoad = millis();
-
 
 }
 
@@ -49,7 +47,6 @@ function unloadLevel() {
   walls = [];
   grounds = [];
   sourcesBarrels = [];
-  timeBarrels = [];
   exitsObj = [];
   players = [];
 
@@ -57,15 +54,13 @@ function unloadLevel() {
 
 function loadWall() {
 
-
-
   for (var wallNumber = 0; wallNumber < levela.walls.length; wallNumber++) {
-    walls.push(new Ground(levela.walls[wallNumber].x,levela.walls[wallNumber].y,levela.walls[wallNumber].w,levela.walls[wallNumber].h,eval(levela.walls[wallNumber].angle)));
+    walls.push(new Ground(levela.walls[wallNumber].x,levela.walls[wallNumber].y,levela.walls[wallNumber].w,levela.walls[wallNumber].h,eval(levela.walls[wallNumber].angle), levela.walls[wallNumber].wallJump));
   }
 
 
   for (var groundNumber = 0; groundNumber < levela.grounds.length; groundNumber++) {
-    grounds.push(new Ground(levela.grounds[groundNumber].x,levela.grounds[groundNumber].y,levela.grounds[groundNumber].w,levela.grounds[groundNumber].h,eval(levela.grounds[groundNumber].angle)));
+    grounds.push(new Ground(levela.grounds[groundNumber].x,levela.grounds[groundNumber].y,levela.grounds[groundNumber].w,levela.grounds[groundNumber].h,eval(levela.grounds[groundNumber].angle),levela.grounds[groundNumber].wallJump));
   }
 
   for (var exitNumber = 0; exitNumber < levela.exits.length; exitNumber++) {
@@ -74,8 +69,7 @@ function loadWall() {
 
 
   for (var sourcesNumber = 0; sourcesNumber < levela.barrelsSources.length; sourcesNumber++) {
-    sourcesBarrels.push([levela.barrelsSources[sourcesNumber].x,levela.barrelsSources[sourcesNumber].y,levela.barrelsSources[sourcesNumber].d,levela.barrelsSources[sourcesNumber].time]);
-    timeBarrels.push(0);
+    sourcesBarrels.push(new BarrelsSource(levela.barrelsSources[sourcesNumber].x,levela.barrelsSources[sourcesNumber].y,levela.barrelsSources[sourcesNumber].radius,levela.barrelsSources[sourcesNumber].time,levela.barrelsSources[sourcesNumber].wallJump));
   }
 
 

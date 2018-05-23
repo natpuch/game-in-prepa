@@ -6,28 +6,32 @@
            "y": 900,
            "w": 1200,
            "h": 20,
-           "angle": "0"
+           "angle": "0",
+		   "wallJump": true
        },
        {
            "x": 600,
            "y": 0,
            "w": 1200,
            "h": 20,
-           "angle": "0"
+           "angle": "0",
+		   "wallJump": false
        },
        {
            "x": 1200,
            "y": 450,
            "w": 20,
            "h": 900,
-           "angle": "0"
+           "angle": "0",
+		   "wallJump": false
        },
        {
            "x": 0,
            "y": 450,
            "w": 20,
            "h": 900,
-           "angle": "0"
+           "angle": "0",
+		   "wallJump": false
        }
      ],
      "grounds": [
@@ -36,49 +40,56 @@
            "y": 765,
            "w": 120,
            "h": 20,
-           "angle": "PI/8"
+           "angle": "PI/8",
+		   "wallJump": true
        },
        {
            "x": 576,
            "y": 675,
            "w": 120,
            "h": 20,
-           "angle": "-PI/8"
+           "angle": "-PI/8",
+		   "wallJump": true
        },
        {
            "x": 960,
            "y": 675,
            "w": 120,
            "h": 20,
-           "angle": "PI/8"
+           "angle": "PI/8",
+		   "wallJump": true
        },
        {
            "x": 1080,
            "y": 540,
            "w": 120,
            "h": 20,
-           "angle": "-PI/8"
+           "angle": "-PI/8",
+		   "wallJump": true
        },
        {
            "x": 600,
            "y": 360,
            "w": 600,
            "h": 20,
-           "angle": "PI/8"
+           "angle": "PI/8",
+		   "wallJump": true
        },
        {
            "x": 600,
            "y": 180,
            "w": 240,
            "h": 20,
-           "angle": "-PI/8"
+           "angle": "-PI/8",
+		   "wallJump": true
        },
        {
            "x": 1080,
            "y": 180,
            "w": 120,
            "h": 20,
-           "angle": "0"
+           "angle": "0",
+		   "wallJump": true
        }
      ],
      "exits": [
@@ -94,8 +105,9 @@
        {
            "x": 600,
            "y": 90,
-           "d": 15,
-           "time": 1000
+           "radius": 15,
+           "time": 1000,
+		   "wallJump": true
        }
      ],
      "players": [

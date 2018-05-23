@@ -1,4 +1,4 @@
-function Ground(x, y, w, h, angle) {
+function Ground(x, y, w, h, angle, wallJump) {
   this.body = Bodies.rectangle(x, y, w, h, {
     isStatic: true
   });
@@ -8,6 +8,7 @@ function Ground(x, y, w, h, angle) {
   this.y = y;
   this.w = w;
   this.h = h;
+  this.body.wallJump = wallJump;
 
   this.show = function() {
     var pos = this.body.position;

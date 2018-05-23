@@ -33,6 +33,7 @@ function Exit(x, y, w, h, winTime ) {
           if (this.time == 0) {
             this.time = (millis() - timeLoad);
             this.win = 1;
+			loadRecords(this.time);
           }
           text('YOU WIN ! ' + this.time / 1000 + 's', 1200 / 2, 900 / 2);
         } else {

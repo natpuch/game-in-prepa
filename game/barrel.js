@@ -1,4 +1,4 @@
-function Barrel(x, y, radius) {
+function Barrel(x, y, radius, wallJump) {
   this.body = Bodies.circle(x, y, radius, {
     friction: 0.1
   });
@@ -6,9 +6,7 @@ function Barrel(x, y, radius) {
   this.x = x;
   this.y = y;
   this.r = radius;
-
-
-
+  this.body.wallJump = wallJump;
 
   this.show = function() {
     var pos = this.body.position;

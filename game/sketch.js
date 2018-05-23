@@ -10,7 +10,6 @@ var grounds;
 var walls;
 var players;
 var barrels;
-var timeBarrels;
 var timeLoad;
 var levelPlaying;
 
@@ -26,6 +25,7 @@ var levelsText;
 var levelField;
 
 
+
 function countLvl(data) {
   countLevels = parseInt(data[0]);
 }
@@ -37,7 +37,39 @@ function setup() {
   engine = Engine.create();
   world = engine.world;
   Engine.run(engine);
-
+  
+  function allowJump(event) {
+	  
+	  for (var i = 0; i < event.pairs.length; i++) {
+		  bodyA = event.pairs[i].bodyA;
+		  bodyB = event.pairs[i].bodyB;
+		  if (bodyA.label == "player" || bodyB.label == "player")  {
+			  if (bodyA.label != "player")	{
+				  if (bodyA.wallJump == true)	{
+					  
+					  console.log(event.pairs[i].bodyA.label);
+					  players[0].jumpAllowed = true;
+					  console.log(event.pairs[i]);
+					  console.log(i);
+					  
+				  }
+			  }
+			  
+			  else if (bodyB.label != "player")	{
+				  if (bodyB.wallJump == true)	{
+					  
+					  console.log(event.pairs[i].bodyB.label);
+					  players[0].jumpAllowed = true;
+					  console.log(event.pairs[i]);
+					  console.log(i);
+					  
+				  }
+			  }
+		  }
+	  }
+  }
+  
+  Matter.Events.on(engine, 'collisionStart', allowJump);
 
   loadStrings("levels/levels.txt", countLvl);
 
@@ -50,7 +82,8 @@ function setup() {
 }
 
 
-function draw() {
+
+ function draw() {
   scale(width / 1200, width / 1200);
   background(51);
   noStroke();
@@ -72,13 +105,7 @@ function draw() {
     pop();
   }
 
-  for (var i = 0; i < sourcesBarrels.length; i++) {
-    sourceBarrels = sourcesBarrels[i];
-    if (millis() - timeBarrels[i] > sourceBarrels[3]) {
-      barrels.push(new Barrel(sourceBarrels[0], sourceBarrels[1], sourceBarrels[2]));
-      timeBarrels[i] = millis();
-    }
-  }
+  
 
   for (var rectBox of boxes) {
     rectBox.show();
@@ -94,6 +121,11 @@ function draw() {
 
   for (var barrel of barrels) {
     barrel.show();
+  }
+  
+  for (var sourceBarrels of sourcesBarrels) {
+    sourceBarrels.newBarrel();
+	sourceBarrels.show();
   }
 
   if (exitsObj != []) {
