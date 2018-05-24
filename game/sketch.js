@@ -25,7 +25,6 @@ var levelsText;
 var levelField;
 
 
-
 function countLvl(data) {
   countLevels = parseInt(data[0]);
 }
@@ -47,10 +46,10 @@ function setup() {
 			  if (bodyA.label != "player")	{
 				  if (bodyA.wallJump == true)	{
 					  
-					  console.log(event.pairs[i].bodyA.label);
+					  //console.log(event.pairs[i].bodyA.label);
 					  players[0].jumpAllowed = true;
-					  console.log(event.pairs[i]);
-					  console.log(i);
+					  //console.log(event.pairs[i]);
+					  //console.log(i);
 					  
 				  }
 			  }
@@ -58,10 +57,10 @@ function setup() {
 			  else if (bodyB.label != "player")	{
 				  if (bodyB.wallJump == true)	{
 					  
-					  console.log(event.pairs[i].bodyB.label);
+					  //console.log(event.pairs[i].bodyB.label);
 					  players[0].jumpAllowed = true;
-					  console.log(event.pairs[i]);
-					  console.log(i);
+					  //console.log(event.pairs[i]);
+					  //console.log(i);
 					  
 				  }
 			  }
@@ -93,10 +92,10 @@ function setup() {
   }
 
 
-  textSize(12);
+  textSize(30);
   fill(0);
-  text((millis() - timeLoad) / 1000, 1200 / 20, 900 / 20);
-  text("x : " + floor(mouseX / width * 1200) + " y : " + floor(mouseY / height * 900), 1200 / 20, 900 / 15);
+  text((millis() - timeLoad) / 1000, 40, 90);
+  text("x : " + floor(mouseX / width * 1200) + " y : " + floor(mouseY / height * 900), 40, 60);
 
   for (var i = 0; i < menuText.length; i++) {
     push();
@@ -139,7 +138,7 @@ function setup() {
     for (var player of players) {
       player.move(millis());
       player.show();
-      text("v = " + players[0].v, 1200 / 20, 75);
+      text("v = " + players[0].v, 40, 120);
     }
 
   }

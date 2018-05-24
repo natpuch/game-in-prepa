@@ -7,6 +7,7 @@ function Exit(x, y, w, h, winTime ) {
   this.winTime = winTime;
   this.win = 0;
   this.time = 0;
+  this.arrived = false;
 
   this.show = function() {
 
@@ -21,25 +22,26 @@ function Exit(x, y, w, h, winTime ) {
     text('EXIT', this.x - 15, this.y - 70);
     pop();
 
-  }
+}
 
   this.arrivedExit = function() {
     for (var player of players) {
       push();
-      if (abs(player.body.position.x - this.x) < this.w / 2 && abs(player.body.position.y - this.y) < this.h / 2 ) {
+      if ((abs(player.body.position.x - this.x) < this.w / 2 && abs(player.body.position.y - this.y) < this.h / 2) || this.arrived == true ) {
         textSize(32);
         fill(255, 0, 0);
         if ((millis() - timeLoad) < this.winTime || (this.time != 0 && this.win == 1)) {
           if (this.time == 0) {
             this.time = (millis() - timeLoad);
             this.win = 1;
-			loadRecords(this.time);
+			this.arrived = true;
           }
           text('YOU WIN ! ' + this.time / 1000 + 's', 1200 / 2, 900 / 2);
         } else {
           text('TOO LATE ! ' + this.time / 1000 + 's', 1200 / 2, 900 / 2);
           if (this.time == 0) {
             this.time = (millis() - timeLoad);
+			this.arrived = true;
           }
         }
       }

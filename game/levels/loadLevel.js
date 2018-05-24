@@ -49,7 +49,6 @@ function unloadLevel() {
   sourcesBarrels = [];
   exitsObj = [];
   players = [];
-
 }
 
 function loadWall() {
@@ -78,6 +77,7 @@ function loadWall() {
   }
 
   console.log("load complete");
+   
 }
 
 
