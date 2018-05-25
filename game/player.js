@@ -48,10 +48,10 @@ function Player(x, y, w, h) {
         y: this.body.velocity.y
       });
     }
-	
-	
-	if (keyIsDown(UP_ARROW) && this.jumpAllowed) {
-	  
+
+
+    if (keyIsDown(UP_ARROW) && this.jumpAllowed) {
+
       Matter.Body.setVelocity(this.body, {
         x: this.body.velocity.x,
         y: -1200 * 0.0075
@@ -59,7 +59,7 @@ function Player(x, y, w, h) {
 
       this.jumpAllowed = false;
     }
-	
+
   }
 
 }

@@ -24,6 +24,9 @@ var levelsText;
 
 var levelField;
 
+var waitTime;
+var waitCount;
+
 
 function countLvl(data) {
   countLevels = parseInt(data[0]);
@@ -36,38 +39,25 @@ function setup() {
   engine = Engine.create();
   world = engine.world;
   Engine.run(engine);
-  
+
   function allowJump(event) {
-	  
-	  for (var i = 0; i < event.pairs.length; i++) {
-		  bodyA = event.pairs[i].bodyA;
-		  bodyB = event.pairs[i].bodyB;
-		  if (bodyA.label == "player" || bodyB.label == "player")  {
-			  if (bodyA.label != "player")	{
-				  if (bodyA.wallJump == true)	{
-					  
-					  //console.log(event.pairs[i].bodyA.label);
-					  players[0].jumpAllowed = true;
-					  //console.log(event.pairs[i]);
-					  //console.log(i);
-					  
-				  }
-			  }
-			  
-			  else if (bodyB.label != "player")	{
-				  if (bodyB.wallJump == true)	{
-					  
-					  //console.log(event.pairs[i].bodyB.label);
-					  players[0].jumpAllowed = true;
-					  //console.log(event.pairs[i]);
-					  //console.log(i);
-					  
-				  }
-			  }
-		  }
-	  }
+    for (var i = 0; i < event.pairs.length; i++) {
+      bodyA = event.pairs[i].bodyA;
+      bodyB = event.pairs[i].bodyB;
+      if (bodyA.label == "player" || bodyB.label == "player") {
+        if (bodyA.label != "player") {
+          if (bodyA.wallJump == true) {
+            players[0].jumpAllowed = true;
+          }
+        } else if (bodyB.label != "player") {
+          if (bodyB.wallJump == true) {
+            players[0].jumpAllowed = true;
+          }
+        }
+      }
+    }
   }
-  
+
   Matter.Events.on(engine, 'collisionStart', allowJump);
 
   loadStrings("levels/levels.txt", countLvl);
@@ -77,22 +67,21 @@ function setup() {
   levelField = createInput();
   levelField.changed(changeLevel);
   levelField.position(0, 0);
-
 }
 
 
 
- function draw() {
+function draw() {
   scale(width / 1200, width / 1200);
   background(51);
   noStroke();
 
   if (keyIsDown(SHIFT)) {
-    changeLevel(levelPlaying);
+    reload();
   }
 
 
-  textSize(30);
+  textSize(20);
   fill(0);
   text((millis() - timeLoad) / 1000, 40, 90);
   text("x : " + floor(mouseX / width * 1200) + " y : " + floor(mouseY / height * 900), 40, 60);
@@ -103,8 +92,6 @@ function setup() {
     text(menuText[i][0], menuText[i][1], menuText[i][2])
     pop();
   }
-
-  
 
   for (var rectBox of boxes) {
     rectBox.show();
@@ -121,14 +108,14 @@ function setup() {
   for (var barrel of barrels) {
     barrel.show();
   }
-  
+
   for (var sourceBarrels of sourcesBarrels) {
     sourceBarrels.newBarrel();
-	sourceBarrels.show();
+    sourceBarrels.show();
   }
 
   if (exitsObj != []) {
-    for (var exitObj of exitsObj){
+    for (var exitObj of exitsObj) {
       exitObj.show();
       exitObj.arrivedExit();
     }
@@ -140,6 +127,13 @@ function setup() {
       player.show();
       text("v = " + players[0].v, 40, 120);
     }
-
   }
+
+  if (waitCount == 1) {
+    while (millis() - waitTime < 500) {
+      timeLoad = millis();
+    }
+  }
+  waitCount++;
+
 }

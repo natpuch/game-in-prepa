@@ -164,13 +164,21 @@
 		   "wallJump": true
 		},
 	   {
-           "x": 780,
+           "x": 790,
            "y": 670,
            "w": 20,
            "h": 50,
            "angle": "-PI/4",
 		   "wallJump": true
-		 }
+		 },
+ 	   {
+            "x": 710,
+            "y": 685,
+            "w": 50,
+            "h": 20,
+            "angle": "0",
+ 		   "wallJump": true
+ 		 }
      ],
      "exits": [
        {
@@ -182,14 +190,13 @@
        }
      ],
      "barrelsSources": [
-	    {
-           "x": 880,
-           "y": 800,
-           "radius": 15,
-           "time": 60000,
-		   "wallJump": true
-        }
-       
+  	    {
+             "x": 880,
+             "y": 800,
+             "radius": 15,
+             "time": 60000,
+  		   "wallJump": true
+       }
      ],
      "players": [
        {

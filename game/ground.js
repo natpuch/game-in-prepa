@@ -21,7 +21,7 @@ function Ground(x, y, w, h, angle, wallJump) {
     rotate(this.body.angle);
     rect(0, 0, this.w, this.h);
     fill(255);
-    rect(0,0,5,5);
+    rect(0, 0, 5, 5);
     pop();
   }
 }
