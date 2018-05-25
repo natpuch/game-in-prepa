@@ -1,20 +1,8 @@
-var levelPlaying;
-var boxesSave;
-var barrelsSave;
-var wallsSave;
-var groundsSave;
-var sourcesBarrelsSave;
-var menuTextSave;
-var exitsObjSave;
-var playersSave;
-
-
-
 function reload() {
   unloadLevel();
   loadWall();
   waitTime = millis();
-  timeLoad = tt;
+  timeLoad = waitTime;
   waitCount = 0;
 }
 
@@ -31,10 +19,7 @@ function loadLevel(level) {
   players = [];
 
   loadFile(level);
-
   timeLoad = millis();
-  tt = millis();
-
 }
 
 function changeLevel() {
