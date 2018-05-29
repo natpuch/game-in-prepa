@@ -149,9 +149,9 @@
 		},
 	   {
            "x": 1030,
-           "y": 395,
+           "y": 385,
            "w": 20,
-           "h": 750,
+           "h": 730,
            "angle": "0",
 		   "wallJump": true
 		},
@@ -161,7 +161,7 @@
            "w": 20,
            "h": 200,
            "angle": "0",
-		   "wallJump": true
+		   "wallJump": false
 		},
 	   {
            "x": 790,
@@ -169,16 +169,32 @@
            "w": 20,
            "h": 50,
            "angle": "-PI/4",
-		   "wallJump": true
+		   "wallJump": false
 		 },
  	   {
             "x": 710,
-            "y": 685,
+            "y": 755,
             "w": 50,
             "h": 20,
             "angle": "0",
  		   "wallJump": true
- 		 }
+ 		 },
+	   {
+           "x": 870,
+           "y": 670,
+           "w": 20,
+           "h": 50,
+           "angle": "PI/4",
+		   "wallJump": false
+		 },
+	   {
+           "x": 830,
+           "y": 500,
+           "w": 20,
+           "h": 250,
+           "angle": "0",
+		   "wallJump": false
+		}
      ],
      "exits": [
        {
@@ -186,15 +202,15 @@
          "y": 160,
          "w": 80,
          "h": 100,
-         "winTime": 11000
+         "winTime": 17000
        }
      ],
      "barrelsSources": [
   	    {
-             "x": 880,
+             "x": 960,
              "y": 800,
              "radius": 15,
-             "time": 60000,
+             "time": 6000,
   		   "wallJump": true
        }
      ],
@@ -204,6 +220,12 @@
          "y": 810,
          "w": 20,
          "h": 20
-       }
+       },
+	   {
+    "x": 90,
+    "y": 810,
+    "w": 20,
+    "h": 20
+  }
      ]
 }

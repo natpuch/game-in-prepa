@@ -80,7 +80,7 @@ function loadWall() {
 
 
   for (var playerNumber = 0; playerNumber < levela.players.length; playerNumber++) {
-    players.push(new Player(levela.players[playerNumber].x, levela.players[playerNumber].y, levela.players[playerNumber].w, levela.players[playerNumber].h));
+    players.push(new Player(levela.players[playerNumber].x, levela.players[playerNumber].y, levela.players[playerNumber].w, levela.players[playerNumber].h, playerNumber));
   }
 
   console.log("load complete");

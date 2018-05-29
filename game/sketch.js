@@ -44,17 +44,19 @@ function setup() {
     for (var i = 0; i < event.pairs.length; i++) {
       bodyA = event.pairs[i].bodyA;
       bodyB = event.pairs[i].bodyB;
-      if (bodyA.label == "player" || bodyB.label == "player") {
-        if (bodyA.label != "player") {
-          if (bodyA.wallJump == true) {
-            players[0].jumpAllowed = true;
-          }
-        } else if (bodyB.label != "player") {
-          if (bodyB.wallJump == true) {
-            players[0].jumpAllowed = true;
-          }
-        }
-      }
+	  for (var j = 0 ; j < players.length ; j++){
+		  if (bodyA.label == "player" + j || bodyB.label == "player" + j) {
+			if (bodyA.label != "player" + j) {
+			  if (bodyA.wallJump == true) {
+				players[j].jumpAllowed = true;
+			  }
+			} else if (bodyB.label != "player" + j) {
+			  if (bodyB.wallJump == true) {
+				players[j].jumpAllowed = true;
+			  }
+			}
+		  }
+	  }
     }
   }
 
@@ -122,10 +124,9 @@ function draw() {
   }
 
   if (players != []) {
-    for (var player of players) {
-      player.move(millis());
-      player.show();
-      text("v = " + players[0].v, 40, 120);
+    for (var i = 0; i < players.length; i++) {
+      players[i].move(i);
+      players[i].show();
     }
   }
 

@@ -1,4 +1,4 @@
-function Player(x, y, w, h) {
+function Player(x, y, w, h, playerNumber) {
   this.body = Bodies.rectangle(x, y, w, h, {
     friction: 1
   });
@@ -7,9 +7,9 @@ function Player(x, y, w, h) {
   this.y = y;
   this.w = w;
   this.h = h;
-  this.timeJump = 0;
   this.v = 5;
-  this.body.label = "player";
+  this.body.label = "player" + playerNumber;
+  this.body.wallJump = true;
   this.jumpAllowed = true;
 
   this.show = function() {
@@ -17,7 +17,11 @@ function Player(x, y, w, h) {
 
     push();
     noStroke();
-    fill(255);
+	if (this.body.label == "player1") {
+		fill(0,0,255);
+	} else {
+		fill(255,0,0);
+	}
     rectMode(CENTER);
     translate(posPlayer.x, posPlayer.y);
     rotate(this.body.angle);
@@ -25,7 +29,7 @@ function Player(x, y, w, h) {
     pop();
   }
 
-  this.move = function(time) {
+  this.move = function(i) {
 
     if (key == "¡" && this.v < 7) {
       this.v = this.v + 0.5;
@@ -36,13 +40,13 @@ function Player(x, y, w, h) {
       key = 0;
     }
 
-    if (keyIsDown(RIGHT_ARROW)) {
+    if ((keyIsDown(RIGHT_ARROW) && i == 0) || (keyIsDown(68) && i == 1)) {
       Matter.Body.setVelocity(this.body, {
         x: this.v,
         y: this.body.velocity.y
       });
     }
-    if (keyIsDown(LEFT_ARROW)) {
+    if ((keyIsDown(LEFT_ARROW) && i == 0) || (keyIsDown(81) && i == 1)) {
       Matter.Body.setVelocity(this.body, {
         x: -this.v,
         y: this.body.velocity.y
@@ -50,7 +54,7 @@ function Player(x, y, w, h) {
     }
 
 
-    if (keyIsDown(UP_ARROW) && this.jumpAllowed) {
+    if (((keyIsDown(UP_ARROW) && i == 0) || (keyIsDown(90) && i == 1)) && this.jumpAllowed) {
 
       Matter.Body.setVelocity(this.body, {
         x: this.body.velocity.x,

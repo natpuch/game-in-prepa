@@ -27,6 +27,8 @@ function Exit(x, y, w, h, winTime) {
   this.arrivedExit = function() {
     for (var player of players) {
       push();
+	  strokeWeight(3);
+	  stroke(0);
       if ((abs(player.body.position.x - this.x) < this.w / 2 && abs(player.body.position.y - this.y) < this.h / 2) || this.arrived == true) {
         textSize(32);
         fill(255, 0, 0);
@@ -36,9 +38,11 @@ function Exit(x, y, w, h, winTime) {
             this.win = 1;
             this.arrived = true;
           }
-          text('YOU WIN ! ' + this.time / 1000 + 's', 1200 / 2, 900 / 2);
+		  var tWidth = textWidth('YOU WIN ! ' + this.time / 1000 + 's');
+          text('YOU WIN ! ' + this.time / 1000 + 's', 1200 / 2 - tWidth / 2, 900 / 2);
         } else {
-          text('TOO LATE ! ' + this.time / 1000 + 's', 1200 / 2, 900 / 2);
+		  var tWidth = textWidth('TOO LATE ! ' + this.time / 1000 + 's');
+          text('TOO LATE ! ' + this.time / 1000 + 's', 1200 / 2 - tWidth / 2, 900 / 2);
           if (this.time == 0) {
             this.time = (millis() - timeLoad);
             this.arrived = true;
