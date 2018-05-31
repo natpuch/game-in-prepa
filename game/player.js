@@ -16,7 +16,8 @@ function Player(x, y, w, h, playerNumber) {
     var posPlayer = this.body.position;
 
     push();
-    noStroke();
+    stroke(0);
+	strokeWeight(2);
 	if (this.body.label == "player1") {
 		fill(0,0,255);
 	} else {

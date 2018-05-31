@@ -120,11 +120,17 @@
     "w": 80,
     "h": 100,
     "winTime": 10000,
-	"multi": false
+	"multi": true
   }],
   "barrelsSources": [],
   "players": [{
     "x": 120,
+    "y": 810,
+    "w": 20,
+    "h": 20
+  },
+  {
+    "x": 90,
     "y": 810,
     "w": 20,
     "h": 20

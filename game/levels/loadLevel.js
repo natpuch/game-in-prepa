@@ -70,7 +70,7 @@ function loadWall() {
   }
 
   for (var exitNumber = 0; exitNumber < levela.exits.length; exitNumber++) {
-    exitsObj.push(new Exit(levela.exits[exitNumber].x, levela.exits[exitNumber].y, levela.exits[exitNumber].w, levela.exits[exitNumber].h, levela.exits[exitNumber].winTime));
+    exitsObj.push(new Exit(levela.exits[exitNumber].x, levela.exits[exitNumber].y, levela.exits[exitNumber].w, levela.exits[exitNumber].h, levela.exits[exitNumber].winTime, levela.exits[exitNumber].multi ));
   }
 
 

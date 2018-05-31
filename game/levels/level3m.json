@@ -215,8 +215,7 @@
     "y": 880,
     "w": 80,
     "h": 100,
-    "winTime": 35000,
-	"multi": false
+    "winTime": 35000
   }],
   "barrelsSources": [{
       "x": 478,
@@ -230,11 +229,18 @@
       "y": 18,
       "radius": 15,
       "time": 3000,
-      "wallJump": true
+      "wallJump": true,
+	  "multi": true
     }
   ],
   "players": [{
     "x": 120,
+    "y": 810,
+    "w": 20,
+    "h": 20
+  },
+  {
+    "x": 90,
     "y": 810,
     "w": 20,
     "h": 20

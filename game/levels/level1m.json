@@ -1,5 +1,5 @@
 {
-  "name": "level2",
+  "name": "level1",
   "walls": [{
       "x": 600,
       "y": 900,
@@ -34,97 +34,85 @@
     }
   ],
   "grounds": [{
-      "x": 244,
-      "y": 791,
-      "w": 100,
+      "x": 240,
+      "y": 765,
+      "w": 120,
       "h": 20,
-      "angle": "0",
+      "angle": "PI/8",
       "wallJump": true
     },
     {
-      "x": 426,
-      "y": 706,
-      "w": 100,
+      "x": 576,
+      "y": 675,
+      "w": 120,
       "h": 20,
-      "angle": "0",
+      "angle": "-PI/8",
       "wallJump": true
     },
     {
-      "x": 614,
-      "y": 643,
-      "w": 100,
+      "x": 960,
+      "y": 675,
+      "w": 120,
       "h": 20,
-      "angle": "0",
+      "angle": "PI/8",
       "wallJump": true
     },
     {
-      "x": 781,
-      "y": 591,
-      "w": 100,
+      "x": 1080,
+      "y": 540,
+      "w": 120,
       "h": 20,
-      "angle": "0",
+      "angle": "-PI/8",
       "wallJump": true
     },
     {
-      "x": 596,
-      "y": 520,
-      "w": 100,
+      "x": 600,
+      "y": 360,
+      "w": 600,
       "h": 20,
-      "angle": "0",
+      "angle": "PI/8",
       "wallJump": true
     },
     {
-      "x": 795,
-      "y": 435,
-      "w": 100,
+      "x": 600,
+      "y": 180,
+      "w": 240,
       "h": 20,
-      "angle": "0",
+      "angle": "-PI/8",
       "wallJump": true
     },
     {
-      "x": 971,
-      "y": 376,
-      "w": 100,
-      "h": 20,
-      "angle": "0",
-      "wallJump": true
-    },
-    {
-      "x": 1118,
-      "y": 300,
-      "w": 100,
-      "h": 20,
-      "angle": "0",
-      "wallJump": true
-    },
-    {
-      "x": 924,
-      "y": 204,
-      "w": 100,
-      "h": 20,
-      "angle": "0",
-      "wallJump": true
-    },
-    {
-      "x": 1121,
-      "y": 131,
-      "w": 100,
+      "x": 1080,
+      "y": 180,
+      "w": 120,
       "h": 20,
       "angle": "0",
       "wallJump": true
     }
   ],
   "exits": [{
-    "x": 1121,
-    "y": 110,
+    "x": 1080,
+    "y": 160,
     "w": 80,
     "h": 100,
-    "winTime": 10000,
-	"multi": false
+    "winTime": 11000,
+	"multi": true
   }],
-  "barrelsSources": [],
+  "barrelsSources": [{
+    "x": 600,
+    "y": 90,
+    "radius": 15,
+    "time": 1000,
+    "wallJump": true
+  }],
   "players": [{
     "x": 120,
+    "y": 810,
+    "w": 20,
+    "h": 20
+  },
+  {
+    "x": 160,
     "y": 810,
     "w": 20,
     "h": 20
