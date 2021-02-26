@@ -1,7 +1,7 @@
 How to play this game?
 ====
 
-[Here is the link to the game](https://natpuch.github.io/game-in-prepa/game/index.html)
+[Here is the link to the game.](https://natpuch.github.io/game-in-prepa/game/index.html)
 
 Choose level
 ----
