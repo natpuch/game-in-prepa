@@ -21,11 +21,11 @@ Commands
 ----
 Jump: 
   - p1: **UP ARROW**
-  - p2: **z**
+  - p2: **z** or **w**
 
 Left: 
   - p1: **LEFT ARROW**
-  - p2: **q**
+  - p2: **q** or **a**
 
 Right: 
   - p1: **RIGHT ARROW**
