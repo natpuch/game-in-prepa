@@ -47,7 +47,7 @@ function Player(x, y, w, h, playerNumber) {
         y: this.body.velocity.y
       });
     }
-    if ((keyIsDown(LEFT_ARROW) && i == 0) || (keyIsDown(81) && i == 1)) {
+    if ((keyIsDown(LEFT_ARROW) && i == 0) || ((keyIsDown(81) || keyIsDown(65)) && i == 1)) {
       Matter.Body.setVelocity(this.body, {
         x: -this.v,
         y: this.body.velocity.y
@@ -55,7 +55,7 @@ function Player(x, y, w, h, playerNumber) {
     }
 
 
-    if (((keyIsDown(UP_ARROW) && i == 0) || (keyIsDown(90) && i == 1)) && this.jumpAllowed) {
+    if (((keyIsDown(UP_ARROW) && i == 0) || ((keyIsDown(90) || keyIsDown(87)) && i == 1)) && this.jumpAllowed) {
 
       Matter.Body.setVelocity(this.body, {
         x: this.body.velocity.x,
